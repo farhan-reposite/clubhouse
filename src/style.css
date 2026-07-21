@@ -1,0 +1,764 @@
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== TOPBAR WINDOW BUTTONS ===== */
+.topbar-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #9ca3af;
+  transition:
+    background 120ms,
+    color 120ms;
+}
+.topbar-icon-btn:hover {
+  background: rgba(0, 0, 0, 0.06);
+  color: #374151;
+}
+html.dark .topbar-icon-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #e5e7eb;
+}
+.topbar-close:hover {
+  background: rgba(239, 68, 68, 0.12) !important;
+  color: #ef4444 !important;
+}
+html.dark .topbar-close:hover {
+  background: rgba(239, 68, 68, 0.2) !important;
+  color: #f87171 !important;
+}
+
+@layer base {
+  body {
+    @apply font-sans;
+    background-color: #f4f4f5;
+  }
+  html.dark body {
+    background-color: #222226;
+  }
+}
+
+@layer components {
+  /* --- Sidebar Nav --- */
+  .nav-link {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-gray-500 transition-all duration-150;
+  }
+  .nav-link:hover:not(.active) {
+    background-color: rgba(0, 0, 0, 0.05);
+    @apply text-gray-900;
+  }
+  .nav-link.active {
+    @apply font-semibold text-white bg-orange-500;
+    box-shadow:
+      0 0 20px rgba(252, 102, 1, 0.45),
+      0 4px 12px rgba(252, 102, 1, 0.3);
+  }
+  .nav-link.active:hover {
+    @apply text-white bg-orange-500;
+  }
+
+  /* --- Buttons --- */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white transition-all duration-150 bg-orange-500 hover:bg-orange-600 rounded-xl;
+    box-shadow: 0 2px 8px rgba(252, 102, 1, 0.3);
+  }
+  .btn-primary:hover {
+    box-shadow: 0 4px 16px rgba(252, 102, 1, 0.4);
+    transform: translateY(-1px);
+  }
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 transition-all duration-150 bg-white border border-gray-200 hover:bg-gray-50 rounded-xl;
+  }
+  .btn-danger {
+    @apply px-4 py-2 text-sm font-medium text-white transition-all duration-150 bg-red-500 hover:bg-red-600 rounded-xl;
+  }
+  .btn-success {
+    @apply px-4 py-2 text-sm font-medium text-white transition-all duration-150 bg-green-500 hover:bg-green-600 rounded-xl;
+  }
+
+  /* --- Card --- */
+  .card {
+    @apply p-5 bg-white border border-gray-100 rounded-2xl;
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.04),
+      0 8px 24px rgba(0, 0, 0, 0.04);
+  }
+
+  /* --- Forms --- */
+  .form-input {
+    @apply w-full px-3 py-2 text-sm transition-all duration-150 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-400;
+  }
+  .form-label {
+    @apply block text-sm font-semibold text-gray-600 mb-1.5;
+  }
+
+  /* --- Table --- */
+  .table-th {
+    @apply px-4 py-3 text-xs font-semibold tracking-wider text-left text-gray-400 uppercase border-b-2 border-gray-100;
+  }
+  .table-td {
+    @apply px-4 py-3.5 text-sm text-gray-700 border-b border-gray-50;
+  }
+
+  /* --- Badges --- */
+  .badge-green {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-green-50 text-green-700 border border-green-100;
+  }
+  .badge-gray {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-gray-100 text-gray-600;
+  }
+  .badge-orange {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-orange-50 text-orange-600 border border-orange-100;
+  }
+  .badge-red {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-red-50 text-red-600 border border-red-100;
+  }
+
+  /* --- Modals --- */
+  .modal-overlay {
+    @apply fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm;
+  }
+  .modal-box {
+    @apply bg-white rounded-2xl w-full max-w-md max-h-[90vh] overflow-y-auto border border-gray-200;
+    box-shadow:
+      0 24px 64px rgba(0, 0, 0, 0.15),
+      0 4px 16px rgba(0, 0, 0, 0.08);
+  }
+  .modal-header {
+    @apply flex items-center justify-between px-6 py-4 text-white rounded-t-2xl;
+    background: linear-gradient(135deg, #fc6601, #e55a00);
+  }
+
+  /* --- Stat Cards (dashboard) --- */
+  .stat-card {
+    @apply p-5 bg-white border border-gray-100 rounded-2xl;
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.04),
+      0 8px 24px rgba(0, 0, 0, 0.04);
+  }
+  .stat-icon {
+    @apply flex items-center justify-center flex-shrink-0 w-10 h-10 rounded-xl;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.25);
+}
+#app-content::-webkit-scrollbar-thumb {
+  background: #e2e8f0;
+}
+#app-content::-webkit-scrollbar-thumb:hover {
+  background: #cbd5e1;
+}
+html.dark ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+}
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+html.dark #app-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+}
+html.dark #app-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* Slide to confirm */
+.slide-track {
+  @apply relative h-12 overflow-hidden rounded-full select-none;
+  background: #f3f4f6;
+}
+.slide-thumb {
+  @apply absolute top-0 left-0 flex items-center justify-center w-16 h-12 text-white bg-orange-500 rounded-full cursor-grab active:cursor-grabbing;
+  box-shadow: 2px 0 12px rgba(252, 102, 1, 0.3);
+  transition: none;
+}
+.slide-text {
+  @apply absolute inset-0 flex items-center justify-center text-sm font-semibold text-gray-400 pointer-events-none;
+  letter-spacing: 0.01em;
+}
+
+/* ===== DARK MODE ===== */
+
+/* Sidebar nav links */
+html.dark .nav-link:not(.active) {
+  color: #a1a1aa; /* zinc-400 */
+}
+html.dark .nav-link:hover:not(.active) {
+  background-color: rgba(255, 255, 255, 0.07);
+  color: #ffffff;
+}
+
+/* Cards */
+html.dark .card,
+html.dark .stat-card {
+  background-color: #2e2e32;
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.2),
+    0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Modals */
+html.dark .modal-box {
+  background-color: #2e2e32;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Forms */
+html.dark .form-input {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: #e5e7eb;
+}
+html.dark .form-input:focus {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(252, 102, 1, 0.5);
+}
+/* Date picker calendar icon & select dropdown arrow — force light-on-dark */
+html.dark input[type="date"],
+html.dark input[type="time"],
+html.dark select {
+  color-scheme: dark;
+}
+/* Native select dropdown panel background in dark mode */
+html.dark select option {
+  background-color: #2e2e32;
+  color: #e5e7eb;
+}
+/* F&B cart qty counter text */
+html.dark #app-content span.text-center.text-xs.font-semibold {
+  color: #e5e7eb;
+}
+/* Racket modal — "Select all" label & "Available Rackets" heading */
+html.dark #tp-checkall-label {
+  color: #d1d5db;
+}
+html.dark #tp-avail-box p.text-gray-800 {
+  color: #f3f4f6;
+}
+/* F&B cart +/- buttons */
+html.dark #app-content button.bg-white.border.text-gray-600 {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: #e5e7eb;
+}
+html.dark #app-content button.bg-white.border.text-gray-600:hover {
+  background-color: rgba(255, 255, 255, 0.14);
+}
+html.dark .form-label {
+  color: #d1d5db;
+}
+
+/* Buttons */
+html.dark .btn-secondary {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: #d1d5db;
+}
+html.dark .btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.09);
+}
+
+/* Tables */
+html.dark .table-th {
+  color: #6b7280;
+  border-color: rgba(255, 255, 255, 0.07);
+}
+html.dark .table-td {
+  color: #d1d5db;
+  border-color: rgba(255, 255, 255, 0.04);
+}
+
+/* Badges */
+html.dark .badge-gray {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: transparent;
+  color: #d1d5db;
+}
+html.dark .badge-green {
+  background-color: rgba(34, 197, 94, 0.1);
+  border-color: rgba(34, 197, 94, 0.2);
+  color: #4ade80;
+}
+html.dark .badge-orange {
+  background-color: rgba(252, 102, 1, 0.12);
+  border-color: rgba(252, 102, 1, 0.2);
+  color: #fb923c;
+}
+html.dark .badge-red {
+  background-color: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.2);
+  color: #f87171;
+}
+
+/* Slide to confirm */
+html.dark .slide-track {
+  background: rgba(255, 255, 255, 0.06);
+}
+html.dark .slide-text {
+  color: #6b7280;
+}
+
+/* App content — general overrides for dynamically rendered pages */
+html.dark #app-content .bg-white {
+  background-color: #2e2e32;
+}
+html.dark #app-content .bg-gray-50 {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+html.dark #app-content .bg-gray-100 {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+html.dark #app-content .text-gray-900 {
+  color: #f3f4f6;
+}
+html.dark #app-content .text-gray-700 {
+  color: #d1d5db;
+}
+html.dark #app-content .text-gray-600 {
+  color: #9ca3af;
+}
+html.dark #app-content .text-gray-500 {
+  color: #6b7280;
+}
+html.dark #app-content .text-gray-400 {
+  color: #6b7280;
+}
+html.dark #app-content .border-gray-100 {
+  border-color: rgba(255, 255, 255, 0.06);
+}
+html.dark #app-content .border-gray-200 {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+html.dark #app-content .border-gray-50 {
+  border-color: rgba(255, 255, 255, 0.04);
+}
+html.dark #app-content pre.bg-gray-100 {
+  background-color: rgba(255, 255, 255, 0.06);
+  color: #d1d5db;
+}
+
+/* Text — missing shades */
+html.dark #app-content .text-gray-800 {
+  color: #f3f4f6;
+}
+
+/* Icon & accent backgrounds */
+html.dark #app-content .bg-orange-50 {
+  background-color: rgba(252, 102, 1, 0.12);
+}
+html.dark #app-content .bg-orange-100 {
+  background-color: rgba(252, 102, 1, 0.18);
+}
+html.dark #app-content .bg-blue-50 {
+  background-color: rgba(59, 130, 246, 0.12);
+}
+html.dark #app-content .bg-blue-100 {
+  background-color: rgba(59, 130, 246, 0.18);
+}
+html.dark #app-content .bg-green-50 {
+  background-color: rgba(34, 197, 94, 0.12);
+}
+html.dark #app-content .bg-green-100 {
+  background-color: rgba(34, 197, 94, 0.18);
+}
+html.dark #app-content .bg-purple-50 {
+  background-color: rgba(168, 85, 247, 0.12);
+}
+html.dark #app-content .bg-red-50 {
+  background-color: rgba(239, 68, 68, 0.12);
+}
+
+/* Gradients used in product image placeholders */
+html.dark #app-content .from-orange-50 {
+  --tw-gradient-from: rgba(252, 102, 1, 0.1) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgba(252, 102, 1, 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+html.dark #app-content .to-orange-100 {
+  --tw-gradient-to: rgba(252, 102, 1, 0.18) var(--tw-gradient-to-position);
+}
+
+/* Text color on accent backgrounds */
+html.dark #app-content .text-green-700 {
+  color: #4ade80;
+}
+html.dark #app-content .text-blue-500 {
+  color: #60a5fa;
+}
+html.dark #app-content .text-green-500 {
+  color: #4ade80;
+}
+html.dark #app-content .text-purple-500 {
+  color: #c084fc;
+}
+
+/* Hover states */
+html.dark #app-content .hover\:bg-gray-50:hover {
+  background-color: rgba(255, 255, 255, 0.04) !important;
+}
+html.dark #app-content .hover\:bg-gray-100:hover {
+  background-color: rgba(255, 255, 255, 0.07) !important;
+}
+html.dark #app-content .hover\:bg-gray-200:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+html.dark #app-content .hover\:bg-orange-50:hover {
+  background-color: rgba(252, 102, 1, 0.1);
+}
+html.dark #app-content .hover\:text-gray-700:hover {
+  color: #e5e7eb;
+}
+html.dark #app-content .hover\:border-orange-200:hover {
+  border-color: rgba(252, 102, 1, 0.3);
+}
+/* Table row hover — override Tailwind's near-white bg-gray-50 in dark mode */
+html.dark #app-content tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.04) !important;
+}
+/* Dark mode extra text helpers */
+html.dark #app-content .text-blue-600 {
+  color: #60a5fa;
+}
+html.dark #app-content .bg-blue-50.text-blue-600 {
+  color: #93c5fd;
+}
+html.dark #app-content .hover\:bg-blue-100:hover {
+  background-color: rgba(59, 130, 246, 0.15) !important;
+}
+html.dark #app-content .hover\:bg-green-100:hover {
+  background-color: rgba(34, 197, 94, 0.15) !important;
+}
+html.dark #app-content .hover\:bg-red-100:hover {
+  background-color: rgba(239, 68, 68, 0.15) !important;
+}
+
+/* Bare border (no explicit color class) — small buttons & dividers */
+html.dark #app-content button.border,
+html.dark #app-content .border-t,
+html.dark #app-content .border-b {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Tab underline borders — keep orange for active, mute inactive */
+html.dark #app-content .border-transparent {
+  border-color: transparent;
+}
+html.dark #app-content .border-b-2.border-gray-200 {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Topbar shadow — light mode shows faint line, dark mode shows nothing */
+.topbar-shadow {
+  box-shadow: 0 1px 0 #f1f2f4;
+}
+html.dark .topbar-shadow {
+  box-shadow: none;
+}
+
+/* Rent overview group parent rows */
+html.dark #app-content .ro-group-header {
+  background-color: rgba(252, 102, 1, 0.08) !important;
+}
+html.dark #app-content .ro-group-header .ro-group-member {
+  color: #f3f4f6;
+}
+html.dark #app-content .ro-group-header .ro-group-time {
+  color: #9ca3af;
+}
+/* ============================================================
+   SIDEBAR COLLAPSE
+   Additive only — append to style.css.
+   ============================================================ */
+
+#sidebar {
+  transition: width 200ms ease;
+}
+
+/* Collapsed width */
+html.sidebar-collapsed #sidebar {
+  width: 4.5rem; /* 72px, icon-only */
+}
+
+/* Hide all text content when collapsed */
+html.sidebar-collapsed #sidebar .nav-label,
+html.sidebar-collapsed #sidebar .sidebar-text {
+  display: none;
+}
+
+/* Logo row: stack + center when collapsed, hide full logo, show small one */
+html.sidebar-collapsed #sidebar .logo-row {
+  flex-direction: column;
+  gap: 0.5rem;
+}
+#logo-small {
+  display: none;
+}
+html.sidebar-collapsed #sidebar #logo-full {
+  display: none;
+}
+html.sidebar-collapsed #sidebar #logo-small {
+  display: block;
+}
+
+/* Rotate the collapse icon to point the other way when collapsed */
+html.sidebar-collapsed #sidebar-toggle-btn svg {
+  transform: rotate(180deg);
+}
+
+/* Center nav icons when collapsed */
+html.sidebar-collapsed #sidebar .nav-link {
+  justify-content: center;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Stack user row when collapsed so avatar + logout don't overflow */
+html.sidebar-collapsed #sidebar .user-info-row {
+  flex-direction: column;
+  gap: 0.5rem;
+}
+/* ============================================================
+   RACKET RENT TIMELINE
+   Additive only — append to style.css.
+   ============================================================ */
+
+.rt-wrap {
+  min-width: 0;
+}
+.rt-hours {
+  flex: 1;
+}
+.rt-header {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  background: var(--surface, #fff);
+  border-bottom: 2px solid var(--mist, #e5e7eb);
+}
+.rt-name-col {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft, #9ca3af);
+}
+.rt-hours {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(17, minmax(44px, 1fr));
+}
+.rt-hour-label {
+  text-align: center;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--ink-soft, #9ca3af);
+  padding: 8px 0;
+  border-right: 1px dashed var(--mist, #e5e7eb);
+}
+.rt-row {
+  border-bottom: 1px solid var(--mist, #f3f4f6);
+  height: 64px;
+}
+.rt-row:hover .rt-name-cell {
+  background: var(--paper, #fafafa);
+}
+.rt-hours-track {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(17, minmax(44px, 1fr));
+  min-height: 54px;
+}
+.rt-hour-cell {
+  border-right: 1px solid var(--mist, #f3f4f6);
+  cursor: pointer;
+  transition: background 120ms ease;
+}
+.rt-hour-cell:hover {
+  background: var(--brass-tint, rgba(249, 115, 22, 0.06));
+}
+.rt-hour-past {
+  background: rgba(0, 0, 0, 0.025);
+  cursor: not-allowed;
+}
+html.dark .rt-hour-past {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.rt-block {
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  margin: 0 2px;
+  border-radius: 8px;
+  gap: 10px;
+
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 600;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  z-index: 2;
+  box-sizing: border-box;
+  transition:
+    transform 120ms ease,
+    box-shadow 120ms ease;
+}
+.rt-block:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+.rt-block-booked {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: #fff;
+}
+.rt-block-live {
+  background: linear-gradient(135deg, #fb923c, #f97316);
+  color: #fff;
+}
+.rt-block-ended {
+  background: #9ca3af;
+  color: #fff;
+}
+.rt-block-returned {
+  background: #e5e7eb;
+  color: #4b5563;
+}
+.rt-block-cancelled {
+  background: repeating-linear-gradient(
+    45deg,
+    #fecaca,
+    #fecaca 6px,
+    #fee2e2 6px,
+    #fee2e2 12px
+  );
+  color: #991b1b;
+  text-decoration: line-through;
+}
+html.dark .rt-block-returned {
+  background: rgba(255, 255, 255, 0.1);
+  color: #d1d5db;
+}
+html.dark .rt-block-cancelled {
+  color: #f87171;
+}
+
+.rt-legend-dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+.rt-block-img {
+  width: 34px;
+  height: 34px;
+
+  border-radius: 8px;
+
+  object-fit: cover;
+
+  flex-shrink: 0;
+}
+.rt-block-placeholder {
+  width: 34px;
+  height: 34px;
+
+  border-radius: 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(255, 255, 255, 0.18);
+
+  font-size: 12px;
+  font-weight: 700;
+}
+.rt-block-info {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+}
+.rt-block-racket {
+  font-weight: 700;
+  font-size: 13px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.rt-block-member {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  font-size: 11px;
+  opacity: 0.85;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.rt-member-icon {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  opacity: 0.8;
+}
+.rt-block-member {
+  font-size: 11px;
+
+  opacity: 0.85;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.rt-block-racket {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.rt-block-code {
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.rt-block-detail {
+  font-size: 11px;
+  opacity: 0.8;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
